@@ -1,0 +1,25 @@
+<!-- add-review.component.html -->
+<div class="card mt-4">
+    <div class="card-header">
+        Añadir reseña
+        </div>
+        <div class="card-body">
+        <form (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+            <label for="user" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="user" [(ngModel)]="review.user" name="user" required>
+            </div>
+            <div class="mb-3">
+            <label for="rating" class="form-label">Puntuación (1-5)</label>
+            <select class="form-select" id="rating" [(ngModel)]="review.rating" name="rating">
+                <option *ngFor="let num of [1,2,3,4,5]" [value]="num">{{ num }}</option>
+            </select>
+            </div>
+            <div class="mb-3">
+            <label for="comment" class="form-label">Comentario</label>
+            <textarea class="form-control" id="comment" [(ngModel)]="review.comment" name="comment" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">Enviar reseña</button>
+        </form>
+    </div>
+</div>

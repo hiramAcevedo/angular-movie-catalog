@@ -1,0 +1,9 @@
+<!-- movie-card.component.html -->
+<div class="card h-100">
+    <img [src]="movie.imageUrl" class="card-img-top" [alt]="movie.title">
+    <div class="card-body">
+        <h5 class="card-title">{{ movie.title }}</h5>
+        <p class="card-text">{{ movie.year }} | {{ movie.genre }}</p>
+        <button class="btn btn-primary" (click)="onViewDetails()">Ver detalles</button>
+    </div>
+</div>

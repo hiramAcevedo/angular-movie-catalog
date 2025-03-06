@@ -1,0 +1,31 @@
+<!-- movie-list.component.html -->
+<app-header></app-header>
+
+<div class="container mt-4">
+    <h1 class="mb-4">Catálogo de Películas</h1>
+    
+    <!-- Filtros por género -->
+    <div class="mb-4">
+        <h5>Filtrar por género:</h5>
+        <div class="btn-group">
+        <button *ngFor="let genre of genres" 
+                (click)="filterByGenre(genre)"
+                [class.active]="selectedGenre === genre"
+                class="btn btn-outline-primary">
+            {{ genre }}
+        </button>
+        </div>
+    </div>
+    
+    <!-- Lista de películas -->
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+        <div *ngFor="let movie of filteredMovies" class="col">
+        <app-movie-card 
+            [movie]="movie" 
+            (viewDetails)="viewMovieDetails($event)">
+        </app-movie-card>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

@@ -1,0 +1,37 @@
+<!-- movie-detail.component.html -->
+<app-header></app-header>
+
+<div class="container mt-4" *ngIf="movie">
+    <div class="row">
+        <div class="col-md-4">
+        <img [src]="movie.imageUrl" [alt]="movie.title" class="img-fluid rounded">
+        </div>
+        <div class="col-md-8">
+        <h1>{{ movie.title }}</h1>
+        <p class="lead">{{ movie.year }} | {{ movie.genre }}</p>
+        <p><strong>Director:</strong> {{ movie.director }}</p>
+        <p>{{ movie.description }}</p>
+        
+        <h3 class="mt-4">Reseñas</h3>
+        <div *ngIf="movie.reviews && movie.reviews.length > 0; else noReviews">
+            <div class="card mb-3" *ngFor="let review of movie.reviews">
+            <div class="card-body">
+                <h5 class="card-title">{{ review.user }} - {{ review.rating }}/5</h5>
+                <p class="card-text">{{ review.comment }}</p>
+            </div>
+            </div>
+        </div>
+        <ng-template #noReviews>
+            <p>No hay reseñas disponibles.</p>
+        </ng-template>
+        
+        <app-add-review (reviewAdded)="addReview($event)"></app-add-review>
+        
+        <div class="mt-4">
+            <a [routerLink]="['/']" class="btn btn-primary">Volver al catálogo</a>
+        </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>
